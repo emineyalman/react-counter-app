@@ -22,34 +22,50 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F172A] flex items-center justify-center p-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 via-[#0F172A] to-[#0F172A]">
-      <div className="relative backdrop-blur-xl bg-white/5 rounded-3xl p-8 md:p-12 shadow-2xl w-full max-w-lg border border-white/10 hover:border-sky-400/30 transition-all duration-500">
-        {/* Enhanced decorative elements */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-sky-400 rounded-full filter blur-[100px] opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-400 rounded-full filter blur-[100px] opacity-30 animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-sky-400/10 to-purple-500/10 rounded-full filter blur-3xl opacity-20 animate-spin-slow"></div>
-        
-        <div className="absolute top-4 right-4 flex gap-2">
-          {Object.keys(themes).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTheme(t)}
-              className={`w-6 h-6 rounded-full bg-gradient-to-r ${themes[t]} transition-transform hover:scale-110 ${theme === t ? 'ring-2 ring-white' : ''}`}
-            />
-          ))}
-        </div>
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-[#1a1a2e] to-[#16213e]">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-10 left-1/2 w-96 h-96 bg-gradient-to-r from-violet-500/30 to-purple-500/30 rounded-full filter blur-3xl opacity-70 animate-pulse"></div>
+      </div>
 
-        <h1 className={`text-5xl md:text-7xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r ${themes[theme]} mb-12 hover:scale-105 transition-transform cursor-default`}>
-          Counter
-        </h1>
-        
-        <div className="space-y-8">
-          <div className="relative bg-black/20 backdrop-blur-lg rounded-2xl p-8 shadow-inner group hover:bg-black/30 transition-all">
-            <div className="counter-value text-6xl font-bold text-center text-white mb-4 group-hover:scale-110 transition-transform">
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+
+      {/* Main Content */}
+      <div className="relative min-h-screen flex items-center justify-center p-4">
+        <div className="relative backdrop-blur-2xl bg-white/10 rounded-3xl p-8 md:p-12 shadow-2xl w-full max-w-lg border border-white/10 hover:border-purple-500/30 transition-all duration-500">
+          {/* Glassmorphism Effects */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl opacity-20 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200"></div>
+          
+          {/* Theme Selector - Updated Design */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full flex gap-2 border border-white/10">
+            {Object.keys(themes).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTheme(t)}
+                className={`w-8 h-8 rounded-full bg-gradient-to-r ${themes[t]} transition-all duration-300 hover:scale-110 ${
+                  theme === t ? 'ring-2 ring-white scale-110' : 'opacity-70'
+                }`}
+              />
+            ))}
+          </div>
+
+          <h1 className={`text-5xl md:text-7xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r ${themes[theme]} mb-12 hover:scale-105 transition-transform cursor-default animate-gradient`}>
+            Counter
+          </h1>
+          
+          {/* Counter Display - Enhanced */}
+          <div className="relative bg-black/30 backdrop-blur-lg rounded-2xl p-8 shadow-inner group hover:bg-black/40 transition-all duration-300">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl opacity-20 blur-sm"></div>
+            <div className="counter-value text-7xl font-bold text-center text-white mb-4 group-hover:scale-110 transition-transform relative">
               {count}
+              <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <input 
-              className="w-full bg-black/20 border border-white/10 rounded-xl p-4 text-center text-2xl text-white focus:border-sky-400 focus:ring-2 ring-sky-400/20 transition-all outline-none"
+              className="w-full bg-black/20 border border-white/10 rounded-xl p-4 text-center text-2xl text-white focus:border-purple-400 focus:ring-2 ring-purple-400/20 transition-all outline-none"
               value={count}
               readOnly
             />
